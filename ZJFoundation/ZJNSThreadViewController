@@ -1,0 +1,135 @@
+//
+//  ZJNSThreadViewController.m
+//  ZJFoundation
+//
+//  Created by YunTu on 15/8/10.
+//  Copyright (c) 2015年 YunTu. All rights reserved.
+//
+
+#import "ZJNSThreadViewController.h"
+#import "UIViewExt.h"
+
+@interface ZJNSThreadViewController (){
+BOOL _isAdded;
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;
+@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
+
+@end
+
+const NSInteger count = 12;
+
+@implementation ZJNSThreadViewController
+
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+/*
+create NSThread 法1:
+*/
+NSThread *thread1 = [[NSThread alloc] initWithTarget:self selector:@selector(thread1) object:nil];
+thread1.threadPriority = .5;
+[thread1 start];
+
+NSThread *thread2 = [[NSThread alloc] initWithTarget:self selector:@selector(thread2) object:nil];
+thread2.threadPriority = .6;
+[thread2 start];
+
+
+}
+
+- (void)thread1 {
+NSLog(@"thread1");
+}
+
+- (void)thread2 {
+NSLog(@"thread2");
+}
+
+/*
+实现每隔1秒加载一个view
+*/
+- (IBAction)add:(UIButton *)sender {
+if (_isAdded) {
+for (UIView *view in self.view.subviews) {
+if ([view isKindOfClass:[UIButton class]] && view.tag > 0) {
+[view removeFromSuperview];
+}
+}
+}
+[sender setTitle:@"Adding...." forState:UIControlStateNormal];
+
+/*
+create NSThread 法2:
+新建了一个脱离的线程。一个脱离的线程意味着当线程退出的时候线程的资源由系统自动回收
+*/
+[NSThread detachNewThreadSelector:@selector(run) toTarget:self withObject:nil];
+
+sender.enabled = NO;
+}
+
+//子线程实现耗时代码
+- (void)run {
+CGFloat offsetY = self.navigationController.navigationBar.bottom + 10;
+CGFloat width = 100;
+for (int i = 0; i < count; i++) {
+UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(15 + i % 3 * width, offsetY + i/3*width, width - 10, width - 10)];
+
+btn.tag = i+1;
+float red =  arc4random() % 256 / 255.0;
+float green = arc4random() % 256 / 255.0;
+float blue = arc4random() % 256 / 255.0;
+float alpha = arc4random() % 256 / 255.0;
+
+btn.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+[btn addTarget:self action:@selector(showColor:) forControlEvents:UIControlEventTouchUpInside];
+NSLog(@"test1");
+/*
+睡眠时间内, 线程被阻塞,程序不往下执行,停止1s后继续执行
+*/
+[NSThread sleepForTimeInterval:1];
+NSLog(@"test2");
+//如果需要在子线程中修改界面,并且修改完该线程并没有执行完的话,为了能够让界面即时得到改变, 需要把修改界面的代码从子线程调回到主线程
+[self performSelectorOnMainThread:@selector(updateUI:) withObject:btn waitUntilDone:NO];
+
+//        [self performSelector:@selector(updateUI:) withObject:btn];   // 不会切换线程
+}
+}
+
+/*
+    耗时代码不要放在主线程
+    修改页面代码不要放在子线程
+    主线程实现修改页面的代码
+*/
+- (void)updateUI:(UIButton *)sender {
+    [sender setTitle:[NSString stringWithFormat:@"%d", sender.tag] forState:UIControlStateNormal];
+    [self.view addSubview:sender];
+
+    if (sender.tag == count - 1) {
+        [self.addBtn setTitle:@"Again" forState:UIControlStateNormal];
+        self.addBtn.enabled = YES;
+        _isAdded = YES;
+    }
+}
+
+- (void)showColor:(UIButton *)sender {
+NSArray *strs = [sender.backgroundColor.description componentsSeparatedByString:@" "];
+self.colorLabel.text = [NSString stringWithFormat:@"red:%@\ngreen:%@\nblue:%@\nalpha:%@", strs[1], strs[2], strs[3], strs[4]];
+}
+
+- (void)didReceiveMemoryWarning {
+[super didReceiveMemoryWarning];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+// Get the new view controller using [segue destinationViewController].
+// Pass the selected object to the new view controller.
+}
+*/
+
+@end
