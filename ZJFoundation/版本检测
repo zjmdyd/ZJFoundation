@@ -1,0 +1,34 @@
+
+-(void)onCheckVersion {
+NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:APP_URL] cachePolicy:0 timeoutInterval:8];
+[request setHTTPMethod:@"POST"];
+
+_progressHUD.labelText = @"检测中....";
+[_progressHUD show:YES];
+[NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
+if (!connectionError) {
+[_progressHUD hide:YES];
+NSDictionary *backDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+if ([backDic[@"resultCount"] integerValue]) {
+NSDictionary *dic = backDic[@"results"][0];
+NSString *latestVersion = dic[@"version"];
+_trackViewUrl = [dic objectForKey:@"trackViewUrl"];
+if (![latestVersion isEqualToString:_currentVersion]) {
+UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+[alert show];
+}
+}
+}else {
+_progressHUD.labelText = @"网络连接失败";
+[_progressHUD hide:YES afterDelay:1];
+}
+}];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+if (buttonIndex==1) {
+[[UIApplication sharedApplication]openURL:[NSURL URLWithString:_trackViewUrl]];
+}
+}

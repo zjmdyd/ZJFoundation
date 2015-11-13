@@ -15,24 +15,30 @@
 @implementation ZJNSExceptionViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
 
-    NSArray *ary;
+    NSMutableArray *ary;
+    NSLog(@"ary = %@", ary[1]);     // 程序不崩溃
+
     @try {
-        NSLog(@"ary = %@", ary[0]);
-        
-        NSException *exception = [NSException exceptionWithName: @"数组为空"
-                                                         reason: @"数组未初始化"
-                                                       userInfo: nil];
-        @throw exception;
+        NSLog(@"ary = %@", ary[1]);
+//        NSException *exception = [NSException exceptionWithName: @"数组为空"
+//                                                         reason: @"数组未初始化"
+//                                                       userInfo: nil];
+//        @throw exception;
     }
     @catch (NSException *exception) {
+        @throw exception;
+        
         NSLog(@"exception : %@, %@", exception.name, exception.reason);
     }
     @finally {
-        ary = [NSArray arrayWithObjects:@0, @1, nil];
+        ary = [NSMutableArray arrayWithObjects:@0, @1, nil];
         NSLog(@"ary = %@", ary);
     }
+    
+//    [self mode2];
 }
 
 - (void)mode2 {
@@ -59,7 +65,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

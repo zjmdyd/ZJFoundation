@@ -47,6 +47,7 @@
 		66EF1E411B9BEC8600FC0E41 /* ZJClockDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EF1E401B9BEC8600FC0E41 /* ZJClockDemoViewController.m */; };
 		66EF1E431B9BEE4200FC0E41 /* clock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66EF1E421B9BEE4200FC0E41 /* clock.jpg */; };
 		66F339861B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F339851B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m */; };
+		F74722DA1BF5EEC0006080DC /* 版本检测 in Resources */ = {isa = PBXBuildFile; fileRef = F74722D91BF5EEC0006080DC /* 版本检测 */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		66EF1E421B9BEE4200FC0E41 /* clock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clock.jpg; sourceTree = "<group>"; };
 		66F339841B9D76EB00C6BB1A /* ZJLocalNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLocalNotificationViewController.h; sourceTree = "<group>"; };
 		66F339851B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLocalNotificationViewController.m; sourceTree = "<group>"; };
+		F74722D91BF5EEC0006080DC /* 版本检测 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "版本检测"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				6663F38D1B82D44D005BE9EA /* ViewController.h */,
 				6663F38E1B82D44D005BE9EA /* ViewController.m */,
 				66E45D7C1BAAC3C300FFB45D /* Instrument */,
+				F74722D91BF5EEC0006080DC /* 版本检测 */,
 				6663F3AF1B82DBCB005BE9EA /* 数据类型篇 */,
 				6663F3B01B82DBE3005BE9EA /* 数据集合篇 */,
 				6663F3B11B82DBE9005BE9EA /* 字符篇 */,
@@ -493,7 +496,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ZJ;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = YunTu;
 				TargetAttributes = {
 					6663F37F1B82D44D005BE9EA = {
@@ -534,6 +537,7 @@
 				6663F3EC1B82DD7A005BE9EA /* 2.png in Resources */,
 				66E45D7D1BAAC3C300FFB45D /* Instrument in Resources */,
 				6663F3941B82D44D005BE9EA /* Images.xcassets in Resources */,
+				F74722DA1BF5EEC0006080DC /* 版本检测 in Resources */,
 				6663F4041B832CF8005BE9EA /* ZJNSThreadViewController in Resources */,
 				6663F3F01B82DD9D005BE9EA /* 1.png in Resources */,
 				66EF1E431B9BEE4200FC0E41 /* clock.jpg in Resources */,
@@ -647,6 +651,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -713,6 +718,7 @@
 				INFOPLIST_FILE = ZJFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudmapin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -725,6 +731,7 @@
 				INFOPLIST_FILE = ZJFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudmapin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -744,6 +751,7 @@
 				);
 				INFOPLIST_FILE = ZJFoundationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudmapin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJFoundation.app/ZJFoundation";
 			};
@@ -759,6 +767,7 @@
 				);
 				INFOPLIST_FILE = ZJFoundationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cloudmapin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJFoundation.app/ZJFoundation";
 			};
