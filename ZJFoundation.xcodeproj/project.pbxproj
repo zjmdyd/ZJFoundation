@@ -48,6 +48,8 @@
 		66EF1E431B9BEE4200FC0E41 /* clock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66EF1E421B9BEE4200FC0E41 /* clock.jpg */; };
 		66F339861B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F339851B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m */; };
 		F74722DA1BF5EEC0006080DC /* 版本检测 in Resources */ = {isa = PBXBuildFile; fileRef = F74722D91BF5EEC0006080DC /* 版本检测 */; settings = {ASSET_TAGS = (); }; };
+		F74C16B11C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F74C16B01C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.m */; settings = {ASSET_TAGS = (); }; };
+		F74C16B41C0D9389004264E7 /* ZJOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F74C16B31C0D9389004264E7 /* ZJOperation.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,10 @@
 		66F339841B9D76EB00C6BB1A /* ZJLocalNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLocalNotificationViewController.h; sourceTree = "<group>"; };
 		66F339851B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLocalNotificationViewController.m; sourceTree = "<group>"; };
 		F74722D91BF5EEC0006080DC /* 版本检测 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "版本检测"; sourceTree = "<group>"; };
+		F74C16AF1C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSOperationDownLoaderDemoVC.h; sourceTree = "<group>"; };
+		F74C16B01C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNSOperationDownLoaderDemoVC.m; sourceTree = "<group>"; };
+		F74C16B21C0D9389004264E7 /* ZJOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJOperation.h; sourceTree = "<group>"; };
+		F74C16B31C0D9389004264E7 /* ZJOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +346,10 @@
 			children = (
 				6663F3CF1B82DCA6005BE9EA /* ZJNSOperationViewController.h */,
 				6663F3D01B82DCA6005BE9EA /* ZJNSOperationViewController.m */,
+				F74C16AF1C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.h */,
+				F74C16B01C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.m */,
+				F74C16B21C0D9389004264E7 /* ZJOperation.h */,
+				F74C16B31C0D9389004264E7 /* ZJOperation.m */,
 			);
 			name = NSOperation;
 			sourceTree = "<group>";
@@ -564,6 +574,7 @@
 				6663F3F61B82DDBD005BE9EA /* UIViewExt.m in Sources */,
 				6663F3BD1B82DC47005BE9EA /* ZJNSStringViewController.m in Sources */,
 				6663F3AE1B82DBB9005BE9EA /* ZJNSNumberViewController.m in Sources */,
+				F74C16B41C0D9389004264E7 /* ZJOperation.m in Sources */,
 				6663F3B71B82DC2F005BE9EA /* ZJNSArrayViewController.m in Sources */,
 				66F339861B9D76EB00C6BB1A /* ZJLocalNotificationViewController.m in Sources */,
 				6663F38C1B82D44D005BE9EA /* ZJFoundation.xcdatamodeld in Sources */,
@@ -587,6 +598,7 @@
 				6663F3C21B82DC56005BE9EA /* ZJCoreDataViewController.m in Sources */,
 				6663F3C31B82DC56005BE9EA /* ColorTransformer.m in Sources */,
 				6663F4021B830A94005BE9EA /* ZJFilePathTableViewCell.m in Sources */,
+				F74C16B11C0D92AD004264E7 /* ZJNSOperationDownLoaderDemoVC.m in Sources */,
 				66EF1E3E1B9BEA3C00FC0E41 /* ZJNSDictionaryViewController.m in Sources */,
 				6663F3D41B82DCAC005BE9EA /* ZJGCDViewController.m in Sources */,
 			);

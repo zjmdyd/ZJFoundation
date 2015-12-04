@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nSC-oz-5aD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nSC-oz-5aD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -37,11 +38,68 @@
                     <navigationItem key="navigationItem" title="ZJFoundation" id="TWh-s3-Zsq"/>
                     <connections>
                         <outlet property="tableView" destination="cCd-z5-5xG" id="rgH-gx-90w"/>
+                        <segue destination="lbG-Jl-nMZ" kind="push" id="bV8-R6-B3H"/>
+                        <segue destination="g4t-tE-4ru" kind="push" id="FMj-04-mMZ"/>
+                        <segue destination="381-am-ssF" kind="push" id="mqC-vc-ExF"/>
+                        <segue destination="gap-zi-J4n" kind="push" id="hKQ-XC-oal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599.4666666666667" y="1031.8666666666666"/>
+            <point key="canvasLocation" x="579" y="1031"/>
+        </scene>
+        <!--Operation Down Loader DemoVC-->
+        <scene sceneID="SPd-5u-pX3">
+            <objects>
+                <viewController storyboardIdentifier="downloaderDemo" id="gap-zi-J4n" customClass="ZJNSOperationDownLoaderDemoVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nqE-IU-0OY"/>
+                        <viewControllerLayoutGuide type="bottom" id="1MU-hh-G1f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aeq-qs-5uB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-7d-Ijj">
+                                <rect key="frame" x="126" y="194" width="69" height="30"/>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="gap-zi-J4n" eventType="touchUpInside" id="NbN-rG-RAh"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z66-eb-YBa">
+                                <rect key="frame" x="35" y="283" width="250" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="tV5-1t-RyA"/>
+                                </constraints>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ses-UP-JZf">
+                                <rect key="frame" x="35" y="324" width="250" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="IdJ-Gc-GZu"/>
+                                    <constraint firstAttribute="width" constant="250" id="rS5-Iz-A8j"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ses-UP-JZf" firstAttribute="centerX" secondItem="aeq-qs-5uB" secondAttribute="centerX" id="2Wp-qk-hee"/>
+                            <constraint firstItem="WEP-7d-Ijj" firstAttribute="centerX" secondItem="aeq-qs-5uB" secondAttribute="centerX" id="8PV-Qs-S4Y"/>
+                            <constraint firstItem="ses-UP-JZf" firstAttribute="top" secondItem="Z66-eb-YBa" secondAttribute="bottom" constant="39" id="MdU-kc-E0W"/>
+                            <constraint firstItem="Z66-eb-YBa" firstAttribute="centerY" secondItem="aeq-qs-5uB" secondAttribute="centerY" id="Yvi-ig-6gW"/>
+                            <constraint firstItem="Z66-eb-YBa" firstAttribute="centerX" secondItem="aeq-qs-5uB" secondAttribute="centerX" id="iWI-sb-kn5"/>
+                            <constraint firstItem="Z66-eb-YBa" firstAttribute="top" secondItem="WEP-7d-Ijj" secondAttribute="bottom" constant="59" id="ryg-A2-J0q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="CSY-ds-g1R"/>
+                    <connections>
+                        <outlet property="downloadIV" destination="ses-UP-JZf" id="tZk-Uk-vl3"/>
+                        <outlet property="progress" destination="Z66-eb-YBa" id="Ouo-0E-vIF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xMF-3W-JKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="1034"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="udi-BU-ZIO">
@@ -59,7 +117,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogr-vG-Olw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238.93333333333334" y="1031.8666666666666"/>
+            <point key="canvasLocation" x="112" y="1031"/>
         </scene>
         <!--Clock Demo View Controller-->
         <scene sceneID="VP6-3W-Wo6">
@@ -118,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZN9-Gm-EXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="-243"/>
+            <point key="canvasLocation" x="112" y="384"/>
         </scene>
         <!--Thread View Controller-->
         <scene sceneID="S1h-kH-onv">
@@ -207,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="it9-I1-qZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="381"/>
+            <point key="canvasLocation" x="579" y="384"/>
         </scene>
         <!--FilePath-->
         <scene sceneID="8L2-oo-1is">
@@ -245,69 +303,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaW-uC-GBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327.4666666666667" y="1031.8666666666666"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9yd-fh-ehH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tq9-Dd-7lB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pTi-6G-eC5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lbG-Jl-nMZ" kind="relationship" relationship="rootViewController" id="nUp-6b-uOM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rRP-e9-sxF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="947.73333333333335" y="1031.8666666666666"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9ud-KM-v7x">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4VB-DQ-3hl" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PCf-hz-GEs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="g4t-tE-4ru" kind="relationship" relationship="rootViewController" id="RYa-xf-2hy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ReM-uz-DTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="947.73333333333335" y="381.50666666666666"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Lc3-bO-pzz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FnB-WS-MCY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SvD-fk-S9h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="381-am-ssF" kind="relationship" relationship="rootViewController" id="3B2-UP-ngX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bGr-a1-MAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="947" y="-243"/>
+            <point key="canvasLocation" x="1030" y="384"/>
         </scene>
     </scenes>
     <resources>
         <image name="clock.jpg" width="259" height="220"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

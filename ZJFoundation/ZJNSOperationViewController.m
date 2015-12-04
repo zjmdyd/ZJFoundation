@@ -30,7 +30,7 @@
         NSOperation是抽象类,系统定义的两个子类:NSBlockOperation / NSInvocationOperation
         注意线程要添
      */
-    
+
     /*
         NSBlockOperation
         开启子线程:界面一边加载, 一边执行子线程
@@ -41,7 +41,7 @@
             NSLog(@"线程1");
         }
     }];
-    
+
     /*
         NSInvocationOperation
      */
@@ -50,7 +50,7 @@
         线程队列：NSOperationQueue
         opration添加到队列当中时,此线程开始执行
      */
-    NSOperationQueue *myQ = [[NSOperationQueue alloc]init];
+    NSOperationQueue *myQ = [[NSOperationQueue alloc] init];
     
     [myQ setMaxConcurrentOperationCount:1];         //  设置最大允许同时执行的线程数, 设为1即为串行,哪个线程先进队列就先执行完在执行后面的进程
     
@@ -68,6 +68,10 @@
         [NSThread sleepForTimeInterval:1];
         NSLog(@"线程2");
     }
+}
+
+- (void)test {
+    NSOperation *op;
 }
 
 - (void)didReceiveMemoryWarning {

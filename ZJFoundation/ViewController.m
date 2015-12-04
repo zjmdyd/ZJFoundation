@@ -25,6 +25,7 @@
 #import "ZJGCDViewController.h"
 #import "ZJNSLockViewController.h"
 #import "ZJNSRunLoopViewController.h"
+#import "ZJNSOperationDownLoaderDemoVC.h"
 
 #import "ZJLocalNotificationViewController.h"
 
@@ -32,7 +33,7 @@
 #import "ZJNSExceptionViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate> {
-    NSArray *_sectionTitles, *_titles;
+    NSArray *_sectionTitles, *_titles, *_vcs;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -52,15 +53,53 @@ static NSString *CELLID = @"cell";
 - (void)initAry {
     _sectionTitles = [NSArray arrayWithObjects:@"数据类型篇", @"数组集合篇", @"字符篇", @"时间篇", @"数据存储篇", @"多线程篇", @"通知篇", @"其他", nil];
     
-    NSArray *s1 = @[@"NSNumber"];
-    NSArray *s2 = @[@"NSArray" , @"NSSet", @"NSDictionary", @"NSPredicate"];
-    NSArray *s3 = @[@"NSString"];
-    NSArray *s4 = @[@"NSDate", @"clockDemo"];
-    NSArray *s5 = @[@"NSKeyedArchiver", @"CoreData"];
-    NSArray *s6 = @[@"NSThread", @"NSOperation", @"GCD", @"NSLock", @"NSRunloop"];
-    NSArray *s7 = @[@"LocalNotification"];
-    NSArray *s8 = @[@"FilePath", @"NSTimer", @"NSException"];
-    _titles = @[s1, s2, s3, s4, s5, s6, s7, s8];
+    NSArray *s0 = @[@"NSNumber"];
+    NSArray *s1 = @[@"NSArray" , @"NSSet", @"NSDictionary", @"NSPredicate"];
+    NSArray *s2 = @[@"NSString"];
+    NSArray *s3 = @[@"NSDate", @"clockDemo"];
+    NSArray *s4 = @[@"NSKeyedArchiver", @"CoreData"];
+    NSArray *s5 = @[@"NSThread", @"NSOperation", @"GCD", @"NSLock", @"NSRunloop", @"DownLoaderDemo"];
+    NSArray *s6 = @[@"LocalNotification"];
+    NSArray *s7 = @[@"FilePath", @"NSTimer", @"NSException"];
+    _titles = @[s0, s1, s2, s3, s4, s5, s6, s7];
+    
+    NSArray *vc0 = @[
+                     [ZJNSNumberViewController new]
+                     ];
+    NSArray *vc1 = @[
+                     [ZJNSArrayViewController new],
+                     [ZJNSSetViewController new],
+                     [ZJNSDictionaryViewController new],
+                     [ZJNSPredicateViewController new]
+                     ];
+    NSArray *vc2 = @[
+                     [ZJNSStringViewController new]
+                     ];
+    NSArray *vc3 = @[
+                     [ZJNSDateViewController new],
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"clock"]
+                     ];
+    NSArray *vc4 = @[
+                     [ZJNSKeyedArchiverViewController new],
+                     [ZJCoreDataViewController new]
+                     ];
+    NSArray *vc5 = @[
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"NSThreadVC"],
+                     [ZJNSOperationViewController new],
+                     [ZJGCDViewController new],
+                     [ZJNSLockViewController new],
+                     [ZJNSRunLoopViewController new],
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"downloaderDemo"],
+                     ];
+    NSArray *vc6 = @[
+                     [ZJNSLockViewController new]
+                     ];
+    NSArray *vc7 = @[
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"filePathVC"],
+                     [ZJNSTimerViewController new],
+                     [ZJNSExceptionViewController new],
+                     ];
+    _vcs = @[vc0, vc1, vc2, vc3, vc4, vc5, vc6, vc7];
 }
 
 #pragma mark - UITableViewDataSource
@@ -93,67 +132,10 @@ static NSString *CELLID = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc;
-    NSInteger row = indexPath.row;
-    if (indexPath.section == 0) {
-        if (row == 0) {
-            vc = [[ZJNSNumberViewController alloc] init];
-        }
-    }else if (indexPath.section == 1) {
-        if (row == 0) {
-            vc = [[ZJNSArrayViewController alloc] init];
-        }else if (row == 1) {
-            vc = [[ZJNSSetViewController alloc] init];
-        }else if (row == 2) {
-            vc = [[ZJNSDictionaryViewController alloc] init];
-        }else if (row == 3) {
-            vc = [[ZJNSPredicateViewController alloc] init];
-        }
-    }else if (indexPath.section == 2) {
-        if (row == 0) {
-            vc = [[ZJNSStringViewController alloc] init];
-        }
-    }else if (indexPath.section == 3) {
-        if (row == 0) {
-            vc = [[ZJNSDateViewController alloc] init];
-        }else if (row == 1) {
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"clock"];
-        }
-    }else if (indexPath.section == 4) {
-        if (row == 0) {
-            vc = [[ZJNSKeyedArchiverViewController alloc] init];
-        }else if (row == 1) {
-            vc = [[ZJCoreDataViewController alloc] init];
-        }
-    }else if (indexPath.section == 5) {
-        if (row == 0) {
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"NSThreadVC"];
-        }else if (row == 1) {
-            vc = [[ZJNSOperationViewController alloc] init];
-        }else if (row == 2) {
-            vc = [[ZJGCDViewController alloc] init];
-        }else if (row == 3) {
-            vc = [[ZJNSLockViewController alloc] init];
-        }else if (row == 4) {
-            vc = [[ZJNSRunLoopViewController alloc] init];
-        }
-    }else if (indexPath.section == 6) {
-        if (row == 0) {
-            vc = [[ZJLocalNotificationViewController alloc] init];
-        }else if (row == 1) {
-            vc = [[ZJNSTimerViewController alloc] init];
-        }
-    }else if (indexPath.section == 7) {
-        if (row == 0) {
-            vc = [self.storyboard instantiateViewControllerWithIdentifier:@"filePathVC"];
-        }else if (row == 1) {
-            vc = [[ZJNSTimerViewController alloc] init];
-        }else if (row == 2) {
-            vc = [[ZJNSExceptionViewController alloc] init];
-        }
-    }
+    UIViewController *vc = _vcs[indexPath.section][indexPath.row];
     
     if (vc) {
+        vc.title = _titles[indexPath.section][indexPath.row];
         vc.view.backgroundColor = [UIColor whiteColor];
         [self.navigationController pushViewController:vc animated:YES];
     }
