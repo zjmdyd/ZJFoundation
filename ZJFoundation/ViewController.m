@@ -14,6 +14,8 @@
 #import "ZJNSDictionaryViewController.h"
 #import "ZJNSPredicateViewController.h"
 
+#import "ZJNSRangeViewController.h"
+
 #import "ZJNSStringViewController.h"
 
 #import "ZJNSDateViewController.h"
@@ -51,17 +53,18 @@ static NSString *CELLID = @"cell";
 }
 
 - (void)initAry {
-    _sectionTitles = [NSArray arrayWithObjects:@"数据类型篇", @"数组集合篇", @"字符篇", @"时间篇", @"数据存储篇", @"多线程篇", @"通知篇", @"其他", nil];
+    _sectionTitles = [NSArray arrayWithObjects:@"数据类型篇", @"数组集合篇", @"范围篇", @"字符篇", @"时间篇", @"数据存储篇", @"多线程篇", @"通知篇", @"其他", nil];
     
     NSArray *s0 = @[@"NSNumber"];
     NSArray *s1 = @[@"NSArray" , @"NSSet", @"NSDictionary", @"NSPredicate"];
-    NSArray *s2 = @[@"NSString"];
-    NSArray *s3 = @[@"NSDate", @"clockDemo"];
-    NSArray *s4 = @[@"NSKeyedArchiver", @"CoreData"];
-    NSArray *s5 = @[@"NSThread", @"NSOperation", @"GCD", @"NSLock", @"NSRunloop", @"DownLoaderDemo"];
-    NSArray *s6 = @[@"LocalNotification"];
-    NSArray *s7 = @[@"FilePath", @"NSTimer", @"NSException"];
-    _titles = @[s0, s1, s2, s3, s4, s5, s6, s7];
+    NSArray *s2 = @[@"NSRange"];
+    NSArray *s3 = @[@"NSString"];
+    NSArray *s4 = @[@"NSDate", @"clockDemo"];
+    NSArray *s5 = @[@"NSKeyedArchiver", @"CoreData"];
+    NSArray *s6 = @[@"NSThread", @"NSOperation", @"GCD", @"NSLock", @"NSRunloop", @"DownLoaderDemo"];
+    NSArray *s7 = @[@"LocalNotification"];
+    NSArray *s8 = @[@"FilePath", @"NSTimer", @"NSException"];
+    _titles = @[s0, s1, s2, s3, s4, s5, s6, s7, s8];
     
     NSArray *vc0 = @[
                      [ZJNSNumberViewController new]
@@ -73,17 +76,20 @@ static NSString *CELLID = @"cell";
                      [ZJNSPredicateViewController new]
                      ];
     NSArray *vc2 = @[
-                     [ZJNSStringViewController new]
+                     [ZJNSRangeViewController new],
                      ];
     NSArray *vc3 = @[
+                     [ZJNSStringViewController new]
+                     ];
+    NSArray *vc4 = @[
                      [ZJNSDateViewController new],
                      [self.storyboard instantiateViewControllerWithIdentifier:@"clock"]
                      ];
-    NSArray *vc4 = @[
+    NSArray *vc5 = @[
                      [ZJNSKeyedArchiverViewController new],
                      [ZJCoreDataViewController new]
                      ];
-    NSArray *vc5 = @[
+    NSArray *vc6 = @[
                      [self.storyboard instantiateViewControllerWithIdentifier:@"NSThreadVC"],
                      [ZJNSOperationViewController new],
                      [ZJGCDViewController new],
@@ -91,15 +97,15 @@ static NSString *CELLID = @"cell";
                      [ZJNSRunLoopViewController new],
                      [self.storyboard instantiateViewControllerWithIdentifier:@"downloaderDemo"],
                      ];
-    NSArray *vc6 = @[
+    NSArray *vc7 = @[
                      [ZJNSLockViewController new]
                      ];
-    NSArray *vc7 = @[
+    NSArray *vc8 = @[
                      [self.storyboard instantiateViewControllerWithIdentifier:@"filePathVC"],
                      [ZJNSTimerViewController new],
                      [ZJNSExceptionViewController new],
                      ];
-    _vcs = @[vc0, vc1, vc2, vc3, vc4, vc5, vc6, vc7];
+    _vcs = @[vc0, vc1, vc2, vc3, vc4, vc5, vc6, vc7, vc8];
 }
 
 #pragma mark - UITableViewDataSource
