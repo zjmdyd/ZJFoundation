@@ -18,8 +18,17 @@
     [super viewDidLoad];
     
     [self assignAndInit];
-    
     [self enumerate];
+    
+    NSArray *relatingAccounts = @[[NSMutableArray array], [NSMutableArray array]];
+    NSLog(@"relatingAccounts = %@", relatingAccounts);
+    
+    NSMutableArray *ary = relatingAccounts[0];
+    NSLog(@"ary = %@, %p", ary, ary);
+    ary = [@[@0] copy]; // 不能改变数组内容
+//    [ary addObject:@0];   // 可以改变数组内容
+    NSLog(@"ary = %@, %p", ary, ary);
+    NSLog(@"relatingAccounts = %@", relatingAccounts);
 }
 
 /**
@@ -41,10 +50,10 @@
      */
     
     NSMutableArray *c;
-    NSLog(@"c = %@, %p, count = %d", c, c, c.count);    // c = (null), 0x0, count = 0
+    NSLog(@"c = %@, %p, count = %zd", c, c, c.count);    // c = (null), 0x0, count = 0
     
     c = [NSMutableArray array];
-    NSLog(@"c = %@, %p, count = %d", c, c, c.count);     // c = (), 0x145476b0, count = 0
+    NSLog(@"c = %@, %p, count = %zd", c, c, c.count);     // c = (), 0x145476b0, count = 0
     
     // 连接字符串API
     NSArray *pathArray = [NSArray arrayWithObjects:@"here", @"be", @"dragons", nil];
