@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3873541A1CE18C63005271F0 /* objc in Resources */ = {isa = PBXBuildFile; fileRef = 387354191CE18C63005271F0 /* objc */; };
 		6057D99D1C30D475007D8713 /* ZJNSRangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6057D99C1C30D475007D8713 /* ZJNSRangeViewController.m */; };
 		6663F3861B82D44D005BE9EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6663F3851B82D44D005BE9EA /* main.m */; };
 		6663F3891B82D44D005BE9EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6663F3881B82D44D005BE9EA /* AppDelegate.m */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387354191CE18C63005271F0 /* objc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = objc; sourceTree = "<group>"; };
 		6057D99B1C30D475007D8713 /* ZJNSRangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNSRangeViewController.h; sourceTree = "<group>"; };
 		6057D99C1C30D475007D8713 /* ZJNSRangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNSRangeViewController.m; sourceTree = "<group>"; };
 		6663F3801B82D44D005BE9EA /* ZJFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 				6663F38E1B82D44D005BE9EA /* ViewController.m */,
 				66E45D7C1BAAC3C300FFB45D /* Instrument */,
 				F74722D91BF5EEC0006080DC /* 版本检测 */,
+				387354191CE18C63005271F0 /* objc */,
 				6663F3AF1B82DBCB005BE9EA /* 数据类型篇 */,
 				6663F3B01B82DBE3005BE9EA /* 数据集合篇 */,
 				6057D99A1C30D3F5007D8713 /* 范围篇 */,
@@ -557,6 +560,7 @@
 			files = (
 				6663F3921B82D44D005BE9EA /* Main.storyboard in Resources */,
 				6663F3971B82D44D005BE9EA /* LaunchScreen.xib in Resources */,
+				3873541A1CE18C63005271F0 /* objc in Resources */,
 				6663F3EC1B82DD7A005BE9EA /* 2.png in Resources */,
 				66E45D7D1BAAC3C300FFB45D /* Instrument in Resources */,
 				6663F3941B82D44D005BE9EA /* Images.xcassets in Resources */,

@@ -1,0 +1,3 @@
+NSLog(@"c1 = %@", objc_getClass([@"ZJWelcomeViewController" UTF8String]));  // c1 = ZJWelcomeViewController
+NSLog(@"c2 = %@", object_getClass([ZJWelcomeViewController class]));        // c2 = ZJWelcomeViewController
+NSLog(@"c3 = %@", object_getClass(@"ZJWelcomeViewController"));             // c3 = __NSCFConstantString
