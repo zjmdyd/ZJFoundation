@@ -41,7 +41,6 @@ static NSString *ImgCellID = @"imgCell";
     NSArray *path0 = [fileManager contentsOfDirectoryAtPath:path error:nil];
     NSLog(@"沙箱所在文件夹的路径:%@", path);
     NSLog(@"path0 = %@", path0);
-
     
     NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSLog(@"documentsPath = %@", documentsPath);

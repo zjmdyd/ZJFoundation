@@ -18,7 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [application cancelAllLocalNotifications];      //通知不删除就会一直执行
     
-    application.applicationIconBadgeNumber = 0;
     
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
@@ -31,16 +30,20 @@
  */
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"接收到本地通知"
-                          
                                                     message:notification.alertBody
-                          
                                                    delegate:nil
-                          
                                           cancelButtonTitle:@"确定"
-                          
                                           otherButtonTitles:nil];
     [alert show];
-    notification.applicationIconBadgeNumber = 0;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSInteger count = [ud integerForKey:@"badgeNum"];
+    notification.applicationIconBadgeNumber = count;
+    count++;
+    [ud setInteger:count forKey:@"badgeNum"];
+    [ud synchronize];
+    notification.applicationIconBadgeNumber = count;
+    
     [application cancelAllLocalNotifications];
 }
 
@@ -64,6 +67,12 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    application.applicationIconBadgeNumber = 0;
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setInteger:0 forKey:@"badgeNum"];
+    [ud synchronize];
+
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

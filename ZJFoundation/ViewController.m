@@ -35,7 +35,7 @@
 #import "ZJNSExceptionViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate> {
-    NSArray *_sectionTitles, *_titles, *_vcs;
+    NSArray *_sectionTitles, *_titles;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,6 +48,8 @@ static NSString *CELLID = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     
     [self initAry];
 }
@@ -66,46 +68,7 @@ static NSString *CELLID = @"cell";
     NSArray *s8 = @[@"FilePath", @"NSTimer", @"NSException"];
     _titles = @[s0, s1, s2, s3, s4, s5, s6, s7, s8];
     
-    NSArray *vc0 = @[
-                     [ZJNSNumberViewController new]
-                     ];
-    NSArray *vc1 = @[
-                     [ZJNSArrayViewController new],
-                     [ZJNSSetViewController new],
-                     [ZJNSDictionaryViewController new],
-                     [ZJNSPredicateViewController new]
-                     ];
-    NSArray *vc2 = @[
-                     [ZJNSRangeViewController new],
-                     ];
-    NSArray *vc3 = @[
-                     [ZJNSStringViewController new]
-                     ];
-    NSArray *vc4 = @[
-                     [ZJNSDateViewController new],
-                     [self.storyboard instantiateViewControllerWithIdentifier:@"clock"]
-                     ];
-    NSArray *vc5 = @[
-                     [ZJNSKeyedArchiverViewController new],
-                     [ZJCoreDataViewController new]
-                     ];
-    NSArray *vc6 = @[
-                     [self.storyboard instantiateViewControllerWithIdentifier:@"NSThreadVC"],
-                     [ZJNSOperationViewController new],
-                     [ZJGCDViewController new],
-                     [ZJNSLockViewController new],
-                     [ZJNSRunLoopViewController new],
-                     [self.storyboard instantiateViewControllerWithIdentifier:@"downloaderDemo"],
-                     ];
-    NSArray *vc7 = @[
-                     [ZJNSLockViewController new]
-                     ];
-    NSArray *vc8 = @[
-                     [self.storyboard instantiateViewControllerWithIdentifier:@"filePathVC"],
-                     [ZJNSTimerViewController new],
-                     [ZJNSExceptionViewController new],
-                     ];
-    _vcs = @[vc0, vc1, vc2, vc3, vc4, vc5, vc6, vc7, vc8];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -138,13 +101,57 @@ static NSString *CELLID = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UIViewController *vc = _vcs[indexPath.section][indexPath.row];
+    UIViewController *vc = [self getVCWithIndex:indexPath];
     
     if (vc) {
         vc.title = _titles[indexPath.section][indexPath.row];
         vc.view.backgroundColor = [UIColor whiteColor];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+- (UIViewController *)getVCWithIndex:(NSIndexPath *)indexPath {
+    NSArray *vc0 = @[
+                     [ZJNSNumberViewController new]
+                     ];
+    NSArray *vc1 = @[
+                     [ZJNSArrayViewController new],
+                     [ZJNSSetViewController new],
+                     [ZJNSDictionaryViewController new],
+                     [ZJNSPredicateViewController new]
+                     ];
+    NSArray *vc2 = @[
+                     [ZJNSRangeViewController new],
+                     ];
+    NSArray *vc3 = @[
+                     [ZJNSStringViewController new]
+                     ];
+    NSArray *vc4 = @[
+                     [ZJNSDateViewController new],
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"clock"]
+                     ];
+    NSArray *vc5 = @[
+                     [ZJNSKeyedArchiverViewController new],
+                     [ZJCoreDataViewController new]
+                     ];
+    NSArray *vc6 = @[
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"NSThreadVC"],
+                     [ZJNSOperationViewController new],
+                     [ZJGCDViewController new],
+                     [ZJNSLockViewController new],
+                     [ZJNSRunLoopViewController new],
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"downloaderDemo"],
+                     ];
+    NSArray *vc7 = @[
+                     [ZJLocalNotificationViewController new]
+                     ];
+    NSArray *vc8 = @[
+                     [self.storyboard instantiateViewControllerWithIdentifier:@"filePathVC"],
+                     [ZJNSTimerViewController new],
+                     [ZJNSExceptionViewController new],
+                     ];
+    NSArray *vcs = @[vc0, vc1, vc2, vc3, vc4, vc5, vc6, vc7, vc8];
+    return vcs[indexPath.section][indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning {

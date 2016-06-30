@@ -20,6 +20,7 @@
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:3];
     UILocalNotification *noti = [[UILocalNotification alloc] init];
     noti.fireDate = date;
+    noti.repeatInterval = NSCalendarUnitMinute; // 每分钟推送
     noti.alertBody = @"本地推送";
     
     //显示在icon上的红色圈中的数子
